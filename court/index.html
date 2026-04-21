@@ -1,0 +1,105 @@
+<!-- backend/templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indic-Legal GPT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+
+  <div class="layout">
+    <aside class="sidebar glass">
+      <div class="brand">
+        <div class="brand-icon">⚖️</div>
+        <div>
+          <h1 id="appTitle">Indic-Legal GPT</h1>
+          <p id="appSubtitle">Context-aware legal intelligence</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <label id="langLabel">Language</label>
+        <select id="languageSelect" onchange="setLanguage(this.value)">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+          <option value="ta">தமிழ்</option>
+          <option value="te">తెలుగు</option>
+          <option value="mr">मराठी</option>
+          <option value="bn">বাংলা</option>
+        </select>
+      </div>
+
+      <div class="panel">
+        <label id="modeLabel">Search mode</label>
+        <button class="chip tab active" data-tab="results" id="modePrecedent">Precedent Search</button>
+        <button class="chip tab" data-tab="mapping" id="modeMapping">Cross-Lingual Mapping</button>
+        <button class="chip tab" data-tab="brief" id="modeSummary">Case Summary</button>
+      </div>
+
+      <div class="panel buttons">
+        <button class="secondary" id="voiceBtn">🎙 Voice</button>
+        <button class="secondary" id="sampleBtn">⚡ Sample</button>
+      </div>
+
+      <div class="panel info-grid">
+        <div><span>22+</span><small>Indic languages</small></div>
+        <div><span>5</span><small>brief lines</small></div>
+        <div><span>AI</span><small>backend ready</small></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="hero glass">
+        <div>
+          <span class="tag">Hackathon Edition</span>
+          <h2 id="heroTitle">Find precedent. Map law. Generate briefs.</h2>
+          <p id="heroDesc">Semantic search for Indian legal workflows with multilingual intelligence.</p>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><strong>Fast</strong><small>preview-first</small></div>
+          <div class="stat"><strong>Clean</strong><small>judge mode</small></div>
+          <div class="stat"><strong>Smart</strong><small>Indic UI</small></div>
+        </div>
+      </header>
+
+      <section class="search glass">
+        <div class="search-row">
+          <input id="query" type="text" placeholder="Try: property dispute inheritance rights under Hindu law" />
+          <button id="searchBtn">Search</button>
+        </div>
+        <div id="hotchips" class="hotchips"></div>
+      </section>
+
+      <section class="preview glass" id="translationPreview" hidden>
+        <div class="section-head"><h3 id="previewTitle">Translated Query Preview</h3><span class="live">Live</span></div>
+        <p id="previewText"></p>
+      </section>
+
+      <section id="results" class="content active"><div id="resultsGrid" class="grid"></div></section>
+
+      <section id="mapping" class="content">
+        <div class="glass card">
+          <div class="section-head"><h3>Clause Mapping</h3><span class="live">Indic</span></div>
+          <p id="mappingText">Regional clause → National framework equivalence appears here.</p>
+          <div id="mappingList" class="mapping-list"></div>
+        </div>
+      </section>
+
+      <section id="brief" class="content">
+        <div class="glass card">
+          <div class="section-head"><h3 id="briefTitle">5-Line Executive Brief</h3><span class="live">Auto</span></div>
+          <ol id="briefList"></ol>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
